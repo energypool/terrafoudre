@@ -1,0 +1,125 @@
+{
+    "format_version": "1.0",
+    "terraform_version": "1.3.7",
+    "values": {
+        "outputs": {},
+        "root_module": {
+            "resources": [
+                {
+                    "address": "data.aws_route_table.rt",
+                    "mode": "data",
+                    "type": "aws_route_table",
+                    "name": "rt",
+                    "provider_name": "registry.terraform.io/hashicorp/aws",
+                    "schema_version": 0,
+                    "values": {
+                        "arn": "arn:aws:ec2:eu-west-1:000000000000:route-table/rtb-00000000000000000",
+                        "associations": [
+                            {
+                                "gateway_id": "",
+                                "main": false,
+                                "route_table_association_id": "rtbassoc-00000000000000000",
+                                "route_table_id": "rtb-00000000000000000",
+                                "subnet_id": "subnet-00000000000000000"
+                            }
+                        ],
+                        "filter": null,
+                        "gateway_id": null,
+                        "id": "rtb-00000000000000000",
+                        "owner_id": "000000000000",
+                        "route_table_id": "rtb-00000000000000000",
+                        "routes": [],
+                        "subnet_id": "subnet-00000000000000000",
+                        "tags": {},
+                        "timeouts": null,
+                        "vpc_id": "vpc-00000000"
+                    },
+                    "sensitive_values": {
+                        "associations": [
+                            {}
+                        ],
+                        "routes": [
+                            {},
+                            {},
+                            {},
+                            {},
+                            {},
+                            {},
+                            {}
+                        ],
+                        "tags": {}
+                    }
+                }
+            ],
+            "child_modules": [
+                {
+                    "resources": [
+                        {
+                            "address": "module.sg.aws_security_group.sg",
+                            "mode": "managed",
+                            "type": "aws_security_group",
+                            "name": "sg",
+                            "provider_name": "registry.terraform.io/hashicorp/aws",
+                            "schema_version": 1,
+                            "values": {
+                                "arn": "arn:aws:ec2:eu-west-1:000000000000:security-group/sg-00000000000000000",
+                                "description": "Public security group",
+                                "egress": [
+                                    {
+                                        "cidr_blocks": [
+                                            "0.0.0.0/0"
+                                        ],
+                                        "description": "",
+                                        "from_port": 0,
+                                        "ipv6_cidr_blocks": [],
+                                        "prefix_list_ids": [],
+                                        "protocol": "-1",
+                                        "security_groups": [],
+                                        "self": false,
+                                        "to_port": 0
+                                    }
+                                ],
+                                "id": "sg-00000000000000000",
+                                "ingress": [],
+                                "name": "public",
+                                "name_prefix": "",
+                                "owner_id": "000000000000",
+                                "revoke_rules_on_delete": false,
+                                "tags": {},
+                                "tags_all": {},
+                                "timeouts": null,
+                                "vpc_id": "vpc-00000000"
+                            },
+                            "sensitive_values": {
+                                "egress": [
+                                    {
+                                        "cidr_blocks": [
+                                            false
+                                        ],
+                                        "ipv6_cidr_blocks": [],
+                                        "prefix_list_ids": [],
+                                        "security_groups": []
+                                    }
+                                ],
+                                "ingress": [
+                                    {
+                                        "cidr_blocks": [
+                                            false
+                                        ],
+                                        "ipv6_cidr_blocks": [],
+                                        "prefix_list_ids": [],
+                                        "security_groups": []
+                                    }
+                                ],
+                                "tags": {},
+                                "tags_all": {}
+                            },
+                            "depends_on": []
+                        }
+                    ],
+                    "address": "module.sg"
+                }
+            ]
+        }
+    }
+}

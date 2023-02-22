@@ -1,5 +1,7 @@
 # terrafoudre
 
+<img src=".doc/terrafoudre.png" alt="terrafoudre logo" width="300">
+
 Find if your terraform resources are used in another terraform state
 
 ## Prerequisities
@@ -37,3 +39,17 @@ Usage of terrafoudre:
   -sourceState string
         Path to json state that contains source resources (default "test/states/source.json")
 ```
+
+
+
+##### Credits
+
+<font size=1>
+
+Dependency by Meko from [Noun Project](https://thenounproject.com/browse/icons/term/dependency/)
+
+thunder by Mansion@design from [Noun Project](https://thenounproject.com/browse/icons/term/thunder/)
+
+Terraform logo from [Terraform](https://www.terraform.io/)
+
+</font>

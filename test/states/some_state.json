@@ -1,0 +1,60 @@
+{
+    "format_version": "1.0",
+    "terraform_version": "1.2.6",
+    "values": {
+        "outputs": {},
+        "root_module": {
+            "resources": [
+                {
+                    "address": "data.aws_caller_identity.caller",
+                    "mode": "data",
+                    "type": "aws_caller_identity",
+                    "name": "caller",
+                    "provider_name": "registry.terraform.io/hashicorp/aws",
+                    "schema_version": 0,
+                    "values": {
+                        "account_id": "000000000000",
+                        "arn": "arn:aws:sts::000000000000:assumed-role/someuser/aws-go-sdk-1675963871509684108",
+                        "id": "000000000000",
+                        "user_id": "AAAAAAAAAAAAAAAAAAAAA:aws-go-sdk-1675963871509684108"
+                    },
+                    "sensitive_values": {}
+                }
+            ],
+            "child_modules": [
+                {
+                    "resources": [
+                        {
+                            "address": "module.an_awesome_module.data.aws_security_group.sg",
+                            "mode": "data",
+                            "type": "aws_security_group",
+                            "name": "sg",
+                            "provider_name": "registry.terraform.io/hashicorp/aws",
+                            "schema_version": 0,
+                            "values": {
+                                "sub_interface_for_go_tests":{
+                                    "arn": "arn:aws:ec2:eu-west-1:000000000000:security-group/sg-00000000000000000"
+                                },
+                                "sub_slice_for_go_tests":[
+                                    "arn:aws:test"
+                                ],
+                                "description": "Public security group",
+                                "filter": null,
+                                "id": "sg-00000000000000000",
+                                "name": "sg",
+                                "tags": {},
+                                "timeouts": null,
+                                "vpc_id": "vpc-00000000",
+                                "some_block_string": "found me ? sg-00000000000000000"
+                            },
+                            "sensitive_values": {
+                                "tags": {}
+                            }
+                        }
+                    ],
+                    "address": "module.an_awesome_module"
+                }
+            ]
+        }
+    }
+}

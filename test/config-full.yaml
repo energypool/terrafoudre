@@ -1,0 +1,32 @@
+defaultKeyMatchers:
+  - id
+providerMatchers:
+  - names:
+      - "registry.terraform.io/hashicorp/aws"
+    keyMatchers:
+      - arn
+      - id
+      - name
+typeMatchers:
+  - names:
+      - "aws_s3_object"
+    providerMatcher:
+      names:
+        - "registry.terraform.io/hashicorp/aws"
+      keyMatchers: [] # No keys means we don't try to look if that resource is used elsewhere
+  - names:
+      - "aws_security_group"
+    providerMatcher:
+      names:
+        - "registry.terraform.io/hashicorp/aws"
+      keyMatchers:
+        - arn
+        - id
+  - names:
+      - "aws_ssm_parameter"
+      - "aws_security_group_rule"
+    providerMatcher:
+      names:
+        - "registry.terraform.io/hashicorp/aws"
+      keyMatchers:
+        - id

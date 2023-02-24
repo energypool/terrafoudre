@@ -117,9 +117,9 @@ func TestExtractSourceResources(t *testing.T) {
 		conf = Configuration{}
 		conf.LoadConfiguration(tt.args.config)
 		got := []SourceResource{}
-		got = append(got, extractSourceResources(state.Values.RootModule)...)
+		got = append(got, extractSourceResources("test/states/source.json", state.Values.RootModule)...)
 		for _, child := range state.Values.RootModule.ChildModules {
-			got = append(got, extractSourceResources(child)...)
+			got = append(got, extractSourceResources("test/states/source.json", child)...)
 		}
 
 		if !equalsSourceResources(got, tt.want) {

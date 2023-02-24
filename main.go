@@ -17,6 +17,7 @@ type SourceResource struct {
 	Value        string
 	Provider     string
 	Address      string
+	State        string
 	Destinations []DestinationResource
 }
 
@@ -45,6 +46,7 @@ func main() {
 	////////////////
 	// Instantiate Pretty Logger
 	////////////////
+	log.Logger = zerolog.New(os.Stdout).With().Timestamp().Caller().Logger()
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	if *debug {
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
@@ -72,9 +74,9 @@ func main() {
 	// Extract source resources interesting keys
 	////////////////
 	sourceResources := []SourceResource{}
-	sourceResources = append(sourceResources, extractSourceResources(state.Values.RootModule)...)
+	sourceResources = append(sourceResources, extractSourceResources(*sourceState, state.Values.RootModule)...)
 	for _, child := range state.Values.RootModule.ChildModules {
-		sourceResources = append(sourceResources, extractSourceResources(child)...)
+		sourceResources = append(sourceResources, extractSourceResources(*sourceState, child)...)
 	}
 
 	////////////////
@@ -113,7 +115,7 @@ func listDestinationStates(source, dir string) []string {
 }
 
 // Extract all key/value from resources that will be used to search in destination resource
-func extractSourceResources(state *tf.StateModule) []SourceResource {
+func extractSourceResources(sourceState string, state *tf.StateModule) []SourceResource {
 	resources := []SourceResource{}
 	for _, resource := range state.Resources {
 		if string(resource.Mode) == "managed" {
@@ -133,6 +135,7 @@ func extractSourceResources(state *tf.StateModule) []SourceResource {
 						Value:    valueStr,
 						Provider: resource.ProviderName,
 						Address:  resource.Address,
+						State:    sourceState,
 					})
 				}
 			}
